@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1024, initial-scale=1.0" />
+  <title>The World in One Day — 24 November 2026</title>
+  <style>
+    :root {
+      --bg-paper: #F6F1E6;
+      --bg-tint: #ECE4D4;
+      --ink-dark: #141414;
+      --ink-body: #262626;
+      --accent: #8B1A1A;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1024px; height: 1024px; overflow: hidden;
+      background-color: var(--bg-paper); color: var(--ink-dark);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    .page {
+      width: 1024px; height: 1024px; padding: 18px 26px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      border: 4px solid var(--ink-dark);
+    }
+    .masthead { text-align: center; border-bottom: 3.5px double var(--ink-dark); padding-bottom: 6px; }
+    .masthead-title { font-size: 52px; font-weight: 900; letter-spacing: 3px; line-height: 1; color: var(--accent); text-transform: uppercase; }
+    .masthead-date {
+      margin-top: 6px; background-color: var(--accent); color: var(--bg-paper);
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 22px; font-weight: 900; letter-spacing: 4px; padding: 5px 14px; text-transform: uppercase;
+    }
+    .ticker {
+      display: flex; align-items: center; gap: 10px; background-color: var(--ink-dark); color: var(--bg-paper);
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 12.5px; font-weight: 700; padding: 5px 10px; margin-top: 6px; white-space: nowrap; overflow: hidden;
+    }
+    .ticker-label { background-color: var(--accent); color: var(--bg-paper); font-size: 11px; font-weight: 900; letter-spacing: 1.5px; padding: 2px 6px; flex-shrink: 0; }
+    .ticker-sep { color: var(--accent); font-weight: 900; }
+    .lead-story {
+      background-color: var(--bg-tint); border-top: 2px solid var(--ink-dark); border-bottom: 3.5px double var(--ink-dark);
+      padding: 10px 16px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 16px; align-items: center;
+    }
+    .lead-content { display: flex; flex-direction: column; gap: 5px; }
+    .lead-header { display: flex; align-items: baseline; gap: 10px; }
+    .lead-kicker {
+      background-color: var(--ink-dark); color: var(--bg-paper);
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 11px; font-weight: 900; letter-spacing: 1.5px; padding: 3px 6px; text-transform: uppercase; flex-shrink: 0; transform: translateY(-2px);
+    }
+    .lead-headline { font-size: 24.5px; font-weight: 900; line-height: 1.15; color: var(--ink-dark); }
+    .lead-summary { font-size: 14px; line-height: 1.35; color: var(--ink-body); }
+    .lead-summary strong { color: var(--ink-dark); font-weight: 850; }
+    .lead-ill { border: 1px solid var(--ink-dark); padding: 4px; background: var(--bg-paper); text-align: center; }
+    .lead-ill-img { width: 100%; height: auto; object-fit: cover; display: block; }
+    .numbers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 6px; }
+    .num-box { border: 1.5px solid var(--ink-dark); background-color: var(--bg-paper); text-align: center; padding: 5px 6px 4px; }
+    .num-big { font-size: 27px; font-weight: 900; line-height: 1.05; color: var(--accent); }
+    .num-label { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; color: var(--ink-body); text-transform: uppercase; margin-top: 1px; }
+    .columns { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; position: relative; flex: 1; margin: 6px 0; min-height: 0; }
+    .columns .col:not(:last-child) { border-right: 1.5px solid #C8BFA8; padding-right: 8px; }
+    .col { display: flex; flex-direction: column; gap: 8px; min-height: 0; overflow: hidden; }
+    .section-header-box {
+      background-color: var(--ink-dark); color: var(--bg-paper);
+      font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+      font-size: 13.5px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+      padding: 4px 8px; border-left: 5px solid var(--accent); display: flex; justify-content: space-between; align-items: center;
+    }
+    .col-icon { font-size: 16px; }
+    .news-item { display: flex; flex-direction: column; gap: 2px; padding-bottom: 5px; border-bottom: 1px dashed #C8BFA8; }
+    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .news-title { font-size: 15px; font-weight: 820; line-height: 1.15; color: var(--ink-dark); }
+    .news-desc { font-size: 12.5px; line-height: 1.25; color: var(--ink-body); }
+    .bottom-row { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 12px; border-top: 2.5px solid var(--ink-dark); padding-top: 6px; }
+    .briefs-box { background-color: var(--bg-tint); padding: 7px 12px; }
+    .briefs-header { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--ink-dark); padding-bottom: 2px; margin-bottom: 5px; }
+    .briefs-list { display: flex; flex-direction: column; gap: 4px; }
+    .brief-line { font-size: 12.5px; line-height: 1.25; color: var(--ink-dark); font-weight: 700; }
+    .brief-bullet { color: var(--accent); margin-right: 5px; font-weight: 900; }
+    .factfile { border: 1.5px solid var(--ink-dark); background-color: var(--bg-paper); padding: 6px 10px 7px; }
+    .factfile-header { font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 11.5px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--ink-dark); padding-bottom: 2px; margin-bottom: 4px; display: flex; justify-content: space-between; }
+    .factfile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3px 12px; }
+    .fact { font-size: 11.5px; line-height: 1.3; color: var(--ink-body); border-bottom: 1px dotted #C8BFA8; padding-bottom: 2px; }
+    .fact b { color: var(--accent); font-weight: 900; margin-right: 3px; }
+    .page-footer { display: flex; justify-content: space-between; border-top: 1px solid var(--ink-dark); padding-top: 4px; margin-top: 6px; font-size: 11px; font-style: italic; color: var(--ink-body); }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div class="masthead-title">THE WORLD IN ONE DAY</div>
+      <div class="masthead-date">TUESDAY, 24 NOVEMBER 2026</div>
+    </header>
+
+    <div class="ticker">
+      <span class="ticker-label">LATEST</span>
+      <span>Huawei guilty in US trade-secrets trial</span>
+      <span class="ticker-sep">•</span>
+      <span>Shanghai chief Chen Jining probed</span>
+      <span class="ticker-sep">•</span>
+      <span>Saudi strikes hit Hodeidah</span>
+    </div>
+
+    <section class="lead-story">
+      <div class="lead-content">
+        <div class="lead-header">
+          <span class="lead-kicker">MAIN STORY</span>
+          <h1 class="lead-headline">Zelensky confirms strike on Russian ship in Gulf of Finland</h1>
+        </div>
+        <p class="lead-summary">
+          President Zelensky confirmed Ukraine hit a Russian vessel in the Gulf of Finland — <strong>the first such strike in those waters</strong> — as allies urged caution. The same day, Russian strikes on Ukraine killed <strong>2 people and injured 48</strong>.
+        </p>
+      </div>
+      <!-- Ship on the Gulf of Finland -->
+      <div class="lead-ill">
+        <svg class="lead-ill-img" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+          <rect width="200" height="80" fill="#F6F1E6"/>
+          <circle cx="16" cy="13" r="6" fill="none" stroke="#8B1A1A" stroke-width="1"/>
+          <!-- Ship -->
+          <g stroke="#262626" stroke-width="1">
+            <rect x="52" y="34" width="96" height="14" fill="#262626"/>
+            <rect x="78" y="24" width="44" height="10" fill="#F6F1E6"/>
+            <line x1="100" y1="24" x2="100" y2="12"/>
+            <rect x="100" y="12" width="16" height="8" fill="#8B1A1A"/>
+            <line x1="60" y1="34" x2="52" y2="26" stroke="#262626"/>
+          </g>
+          <!-- Waves -->
+          <g fill="none" stroke="#262626" stroke-width="1">
+            <path d="M 8 56 Q 20 52 32 56 T 56 56 T 80 56 T 104 56 T 128 56 T 152 56 T 176 56 T 196 56"/>
+            <path d="M 8 64 Q 20 60 32 64 T 56 64 T 80 64 T 104 64 T 128 64 T 152 64 T 176 64 T 196 64"/>
+          </g>
+          <text x="100" y="78" font-size="6" font-family="sans-serif" font-weight="bold" fill="#262626" text-anchor="middle">GULF OF FINLAND · UKRAINE CONFIRMS THE HIT</text>
+        </svg>
+      </div>
+    </section>
+
+    <section class="numbers">
+      <div class="num-box">
+        <div class="num-big">2 · 48</div>
+        <div class="num-label">killed · injured in Russian strikes</div>
+      </div>
+      <div class="num-box">
+        <div class="num-big">4th</div>
+        <div class="num-label">Politburo member probed since 2025</div>
+      </div>
+      <div class="num-box">
+        <div class="num-big">23</div>
+        <div class="num-label">injured in Colombia car bomb</div>
+      </div>
+      <div class="num-box">
+        <div class="num-big">5-YR</div>
+        <div class="num-label">high for global landmine casualties</div>
+      </div>
+    </section>
+
+    <section class="columns">
+      <div class="col">
+        <div class="section-header-box"><span>POLITICS</span><span class="col-icon">🏛️</span></div>
+        <div class="news-item">
+          <h2 class="news-title">Shanghai chief Chen Jining probed</h2>
+          <p class="news-desc">Reuters and AP report China is investigating Politburo member and Shanghai Party chief Chen Jining — the fourth Politburo member probed since 2025.</p>
+        </div>
+        <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid #C8BFA8;">
+          <rect width="100" height="28" fill="#ECE4D4"/>
+          <path d="M 34 22 L 34 14 Q 50 3 66 14 L 66 22 Z" fill="none" stroke="#262626" stroke-width="1"/>
+          <line x1="29" y1="22" x2="71" y2="22" stroke="#262626" stroke-width="1.5"/>
+          <line x1="50" y1="5" x2="50" y2="2" stroke="#262626" stroke-width="1"/>
+          <circle cx="50" cy="2" r="1.2" fill="#8B1A1A"/>
+          <text x="74" y="12" font-size="5" font-family="sans-serif" font-weight="bold" fill="#8B1A1A">SHANGHAI</text>
+          <text x="74" y="19" font-size="5" font-family="sans-serif">PROBE</text>
+          <text x="6" y="12" font-size="4.5" font-family="sans-serif">CHEN</text>
+          <text x="6" y="19" font-size="4.5" font-family="sans-serif">JINING</text>
+        </svg>
+        <div class="news-item">
+          <h2 class="news-title">Ábrego García leaves US for Spain</h2>
+          <p class="news-desc">Kilmar Ábrego García is voluntarily leaving the United States for Spain as a free man, after the trafficking charges against him were dropped.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">CIA non-classified system breached</h2>
+          <p class="news-desc">A CIA non-classified system was hit in a cyberattack; part of the US intelligence director's non-classified information was also affected.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">Australia signs Solomons security pact</h2>
+          <p class="news-desc">Australia and the Solomon Islands signed a security treaty aimed at curbing China's access in the Pacific.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="section-header-box"><span>WAR</span><span class="col-icon">⚓</span></div>
+        <div class="news-item">
+          <h2 class="news-title">Ship hit in the Gulf of Finland</h2>
+          <p class="news-desc">Zelensky confirmed the strike on a Russian ship; ally Norway urged caution. Russian attacks the same day killed 2 and injured 48 in Ukraine.</p>
+        </div>
+        <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid #C8BFA8;">
+          <rect width="100" height="28" fill="#ECE4D4"/>
+          <rect x="28" y="12" width="36" height="7" fill="#262626"/>
+          <rect x="40" y="7" width="14" height="5" fill="#262626"/>
+          <line x1="47" y1="7" x2="47" y2="2" stroke="#262626" stroke-width="1"/>
+          <path d="M 8 23 Q 20 20 32 23 T 56 23 T 80 23 T 96 23" stroke="#262626" stroke-width="0.8" fill="none"/>
+          <text x="72" y="12" font-size="5" font-family="sans-serif" font-weight="bold" fill="#8B1A1A">GULF</text>
+          <text x="72" y="19" font-size="5" font-family="sans-serif">FINLAND</text>
+          <text x="6" y="12" font-size="4.5" font-family="sans-serif">SHIP</text>
+          <text x="6" y="19" font-size="4.5" font-family="sans-serif">HIT</text>
+        </svg>
+        <div class="news-item">
+          <h2 class="news-title">Saudi coalition strikes Hodeidah</h2>
+          <p class="news-desc">The Saudi-led coalition hit the Houthi-held Red Sea port of Hodeidah; the Houthis warned they would strike Jeddah and all Saudi Red Sea ports.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">UK warns Ukraine-aid firms of sabotage</h2>
+          <p class="news-desc">Britain warned firms supplying Ukraine's military that they could be targeted by Russian sabotage, often low-tech arson through proxies.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="section-header-box"><span>ECONOMY</span><span class="col-icon">📈</span></div>
+        <div class="news-item">
+          <h2 class="news-title">Huawei guilty in US secrets trial</h2>
+          <p class="news-desc">A US jury found Huawei guilty of conspiring to steal trade secrets and bank fraud, but cleared it of racketeering conspiracy.</p>
+        </div>
+        <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid #C8BFA8;">
+          <rect width="100" height="28" fill="#ECE4D4"/>
+          <path d="M 8 23 L 24 19 L 38 21 L 54 13 L 70 15 L 88 6" stroke="#8B1A1A" stroke-width="1.5" fill="none"/>
+          <path d="M 88 6 L 82 6 M 88 6 L 87 11" stroke="#8B1A1A" stroke-width="1.2" fill="none"/>
+          <text x="8" y="10" font-size="6" font-family="sans-serif" font-weight="bold" fill="#262626">AI ▼</text>
+          <text x="62" y="25" font-size="5" font-family="sans-serif" font-weight="bold" fill="#8B1A1A">STOCKS</text>
+          <text x="8" y="26" font-size="4.5" font-family="sans-serif">NVIDIA</text>
+        </svg>
+        <div class="news-item">
+          <h2 class="news-title">AI stocks slide, dragging US markets</h2>
+          <p class="news-desc">Nvidia and Anthropic fell as doubts over the AI rally resurfaced; US Treasuries rose as investors sought safety.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">Metals mixed after sell-off</h2>
+          <p class="news-desc">Copper edged up and aluminium steadied after Tuesday's sharp metals sell-off, with traders awaiting US inflation data.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">Dangote refinery to top Africa listings</h2>
+          <p class="news-desc">Dangote's refinery will list in Lagos as Africa's biggest listed company by home market, far ahead of the No. 2 firm.</p>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="section-header-box"><span>WORLD</span><span class="col-icon">🌍</span></div>
+        <div class="news-item">
+          <h2 class="news-title">Landmine casualties hit 5-year high</h2>
+          <p class="news-desc">Global landmine casualties rose to a five-year high, driven by Myanmar's civil war and Syria — where an 11-year-old girl was killed in the north-west.</p>
+        </div>
+        <svg viewBox="0 0 100 28" xmlns="http://www.w3.org/2000/svg" style="border: 1px solid #C8BFA8;">
+          <rect width="100" height="28" fill="#ECE4D4"/>
+          <circle cx="50" cy="14" r="9" fill="none" stroke="#262626" stroke-width="1"/>
+          <path d="M 50 5 L 50 23 M 41 14 L 59 14" stroke="#262626" stroke-width="0.8"/>
+          <circle cx="50" cy="14" r="2" fill="#8B1A1A"/>
+          <text x="66" y="12" font-size="5" font-family="sans-serif" font-weight="bold" fill="#8B1A1A">MINES</text>
+          <text x="66" y="19" font-size="5" font-family="sans-serif">5-YR HIGH</text>
+          <text x="6" y="17" font-size="4.5" font-family="sans-serif">GLOBAL</text>
+        </svg>
+        <div class="news-item">
+          <h2 class="news-title">Colombia car bomb injures 23</h2>
+          <p class="news-desc">A car bomb outside a government building in Villavicencio injured at least 23 people; the president blamed a former FARC faction.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">Hasina plans return on 16 December</h2>
+          <p class="news-desc">Bangladesh's ex-premier Sheikh Hasina says she will return home on 16 December, after exile in Delhi since August 2024.</p>
+        </div>
+        <div class="news-item">
+          <h2 class="news-title">North Korea expels Swiss diplomat</h2>
+          <p class="news-desc">Pyongyang declared a Swiss diplomat persona non grata, in a case Reuters linked to sanctions over children's camps.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="bottom-row">
+      <div class="briefs-box">
+        <div class="briefs-header">IN BRIEF</div>
+        <div class="briefs-list">
+          <div class="brief-line"><span class="brief-bullet">■</span>Norway urges caution after the Gulf of Finland strike</div>
+          <div class="brief-line"><span class="brief-bullet">■</span>Houthis threaten Jeddah if Hodeidah is hit</div>
+          <div class="brief-line"><span class="brief-bullet">■</span>Huawei cleared of racketeering, guilty on secrets and fraud</div>
+          <div class="brief-line"><span class="brief-bullet">■</span>AI doubts send Nvidia and Anthropic lower</div>
+          <div class="brief-line"><span class="brief-bullet">■</span>Anwar's government likely to serve a full term, adviser says</div>
+        </div>
+      </div>
+
+      <div class="factfile">
+        <div class="factfile-header"><span>THE DAY IN NUMBERS</span><span>24 NOV</span></div>
+        <div class="factfile-grid">
+          <div class="fact"><b>2</b>killed in Russian strikes</div>
+          <div class="fact"><b>48</b>injured in the same strikes</div>
+          <div class="fact"><b>4th</b>Politburo member probed since 2025</div>
+          <div class="fact"><b>23</b>injured in Colombia car bomb</div>
+          <div class="fact"><b>5-YR</b>high for landmine casualties</div>
+          <div class="fact"><b>16 Dec</b>Hasina's planned return date</div>
+          <div class="fact"><b>2</b>months: Huawei trial lasted</div>
+          <div class="fact"><b>24</b>age of man jailed in South Africa case</div>
+          <div class="fact"><b>5</b>years, suspended, for that man</div>
+          <div class="fact"><b>23</b>stories in the day's digest</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span>Sources: AP · BBC · Reuters · Bloomberg · Al Jazeera</span>
+      <span>Compiled from verified reports · All figures as reported on 24 Nov 2026</span>
+    </div>
+  </main>
+</body>
+</html>
